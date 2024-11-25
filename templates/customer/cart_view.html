@@ -1,0 +1,46 @@
+
+
+{% extends 'customer/cust_base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+  <div class="row" style="background-color: rgb(196, 231, 243);">
+
+    {% for i in data %}
+      {% if request.user == i.customer_1.user_1 %}
+         {% if i.product_status == 0 %}
+      <div class="col-md-6">
+        <div class="card mb-3" style="margin-top: 15px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{i.item_1.image.url}}"  width="80px" height="150px" alt="..." >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body" style="background-color: offwhite;">
+                <p class="card-text"></p>
+                <h5 class="card-title">{{i.item_1.product_name}}</h5>
+                <p class="card-text"><small class="text-body-secondary"><b> price: {{i.item_1.price}}</b></small></p>
+                  <p class="card-text"><small class="text-body-secondary"><b>qty: {{i.quantity}}</b></small></p>
+                  <p class="card-text"><small class="text-body-secondary"><b>date: {{i.add_date}}</b></small></p>
+
+
+                <form action="{% url 'remove' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">Remove</button>
+             </form>
+                <br>
+                <br>
+                   <a href="{% url 'payment' i.id %}" class="btn btn-success">Buy now</a>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+       {% endif %}
+    {% endfor %}
+
+  </div>
+{% endblock %}

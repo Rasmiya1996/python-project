@@ -1,0 +1,27 @@
+{% extends 'admin/ad_base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+<h1> Review</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">DATE</th>
+        <th scope="col">REVIEW</th>
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.date_1}}</td>
+        <td>{{i.review}}</td>
+     </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock %}

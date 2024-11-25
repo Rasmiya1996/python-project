@@ -1,0 +1,63 @@
+{% extends 'customer/cust_base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+
+                <div class="card-header"><strong>Product</strong></div>
+        <div class="card-body card-block">
+            <form method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label class=" form-control-label">image</label>
+                     <td><img src="{{data.image.url}}" width="50px" height="50px"></td>
+
+                </div>
+                 <div class="form-group">
+                    <label class=" form-control-label">Product name</label>
+                    <input  required  class="form-control" readonly value="{{data.product_name}}">
+
+
+                </div>
+
+                 <div class="form-group">
+                    <label class=" form-control-label">Price</label>
+                    <input  required  class="form-control" readonly value="{{data.price}}">
+
+                </div>
+                  <div class="form-group">
+                    <label class=" form-control-label">Description</label>
+                    <input  required  class="form-control" readonly value="{{data.description}}">
+
+                </div>
+
+
+                 <div class="form-group">
+                    <label class=" form-control-label">Quantity</label>
+                    <input  type="text" name="data"  class="form-control">
+
+
+                </div>
+
+
+
+
+
+                <br>
+                <br>
+               <div class="form-actions form-group ">
+                    <button type="submit" class="btn btn-primary btn-sm">submit</button>
+                </div>
+
+
+
+            </form>
+        </div>
+        </div>
+
+
+    </div>
+</div>
+
+  {% endblock %}

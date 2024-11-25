@@ -1,0 +1,74 @@
+{% extends 'admin/ad_base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+<h1> Approve req view</h1>
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">SL NO</th>
+         <th scope="col">PRODUCT NAME</th>
+        <th scope="col">IMAGE</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">CATEGORY</th>
+
+        <th scope="col">Approval Request</th>
+
+
+
+        </tr>
+
+    </thead>
+    <tbody>
+   {% for i in data %}
+     <tr>
+        <td>{{forloop.counter}}</td>
+         <td>{{i.product_name}}</td>
+        <td><img src="{{i.image.url}}" width="50px" height="50px"></td>
+        <td>{{i.price}}</td>
+         <td>{{i.category}}</td>
+
+
+
+
+ {% if i.approval_status == 0 %}
+          <td>
+              <form action="{% url 'admapprove' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">approve</button>
+
+              </form>
+<!--          </td>-->
+<!--         <td>-->
+
+
+               <form action="{% url 'admreject' i.id %}" method="POST" >
+             {% csrf_token %}<button type="submit" class="btn btn-success">reject</button>
+
+              </form>
+          </td>
+
+
+
+       {% elif i.approval_status == 1 %}
+         <td>
+             <h4 style="color:green;">approved</h4>
+         </td>
+         {% elif i.approval_status == 2 %}
+          <td>
+             <h4 style="color:red;">Rejected</h4>
+         </td>
+
+         {% endif %}
+
+
+
+
+     </tr>
+     {% endfor %}
+     </tbody>
+
+
+
+</table>
+
+
+{% endblock %}

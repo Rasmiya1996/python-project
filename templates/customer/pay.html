@@ -1,0 +1,119 @@
+
+
+
+
+{% extends 'customer/cust_base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+
+
+
+      <div class="col-md-6">
+          <form action="#" method="POST" >
+               {% csrf_token %}
+        <div class="card mb-3" style="margin-top: 15px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{data.item_1.image.url}}"  width="80px" height="100px" alt="..." >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body" style="background-color: offwhite;">
+                <p class="card-text"></p>
+                <h5 class="card-title">{{data.item_1.product_name}}</h5>
+                <p class="card-text"><small class="text-body-secondary"><b> price: {{data.item_1.price}}</b></small></p>
+                  <p class="card-text"><small class="text-body-secondary"><b>qty: {{data.quantity_2}}</b></small></p>
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+        <div class="card mb-3" style="margin-top: 15px;">
+          <div class="row g-0">
+
+            <div class="col-md-8">
+              <div class="card-body" style="background-color: offwhite;">
+                <p class="card-text"></p>
+
+                <div class="form-group">
+                    <label class=" form-control-label" style="font-weight:bold;">Address:</label>
+                    <input  type="text" name="data1"  class="form-control">
+
+
+                </div>
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+        <div class="card mb-3" style="margin-top: 15px;">
+          <div class="row g-0">
+
+            <div class="col-md-8">
+              <div class="card-body" style="background-color: offwhite;">
+                <p class="card-text" style="font-weight:bold;">Payment</p>
+
+             <div class="form-group">
+                 <input type="radio"  name="gender" value="Female">Card payment:<br><br>
+                    <label class=" form-control-label">Card No:</label>
+                    <input  type="text" name="data2"  class="form-control">
+
+                    <label class=" form-control-label">CVV:</label>
+                    <input  type="text" name="data3"  class="form-control"><br><br>
+
+
+
+            <input type="radio"  name="gender" value="Female">Cash on delivery<br><br>
+
+
+                </div>
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+             <td>
+               <button type="submit" class="btn btn-success">Place order</button>
+
+
+             </td>
+              {% if data.product_status == 1 %}
+              <td>
+                  <h3 style="color:green;">order placed successfully</h3>
+              </td>
+
+              {% endif %}
+
+
+
+
+</form>
+
+  </div>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends 'customer/cust_base.html' %}
+ {% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+
+{% csrf_token %}
+<h3>Request successfully send</h3>
+        </div>
+        </div>
+</div>
+{% endblock %}
